@@ -1,0 +1,736 @@
+/* Styles personnalisés pour un look moderne et professionnel - Version Institutionnelle */
+
+:root {
+  /* Palette de Couleurs Institutionnelle */
+  --primary-blue: #003366;      /* Bleu institutionnel */
+  --secondary-blue: #4D6F8F;    /* Bleu secondaire */
+  --accent-green: #2E8B57;       /* Vert pour actions positives */
+  --neutral-gray: #6C757D;       /* Gris neutre */
+  --text-dark: #212529;          /* Texte principal */
+  --background-light: #F8F9FA;   /* Fond clair */
+
+  /* Gradients institutionnels */
+  --primary-gradient: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  --secondary-gradient: linear-gradient(135deg, var(--secondary-blue) 0%, var(--neutral-gray) 100%);
+  --success-gradient: linear-gradient(135deg, var(--accent-green) 0%, #38f9d7 100%);
+  --info-gradient: linear-gradient(135deg, var(--secondary-blue) 0%, #38f9d7 100%);
+  --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --danger-gradient: linear-gradient(135deg, #dc3545 0%, #ee5a24 100%);
+
+  /* Propriétés de design */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background-light);
+  min-height: 100vh;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Navbar institutionnelle */
+.navbar {
+  background: var(--primary-gradient) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid var(--secondary-blue);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  transition: var(--transition);
+}
+
+.navbar:hover {
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+}
+
+/* Cartes institutionnelles */
+.card {
+  border: 1px solid rgba(0, 51, 102, 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  overflow: hidden;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-blue);
+}
+
+.card-header {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-bottom: 2px solid var(--secondary-blue);
+}
+
+.card-body {
+  padding: 2rem;
+  color: var(--text-dark);
+}
+
+/* Boutons modernes */
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+  color: white;
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--secondary-blue);
+  border-color: var(--secondary-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4);
+}
+
+.btn-success {
+  background: var(--accent-green);
+  color: white;
+  border: 2px solid var(--accent-green);
+  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+}
+
+.btn-success:hover {
+  background: #24523C;
+  border-color: #24523C;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 139, 87, 0.4);
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  border: 2px solid #dc3545;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.btn-danger:hover {
+  background: #b02a37;
+  border-color: #b02a37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.btn-info {
+  background: var(--secondary-blue);
+  color: white;
+  border: 2px solid var(--secondary-blue);
+  box-shadow: 0 4px 15px rgba(77, 111, 143, 0.3);
+}
+
+.btn-info:hover {
+  background: #3A5A6F;
+  border-color: #3A5A6F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 111, 143, 0.4);
+}
+
+/* Bouton FAB institutionnel */
+.btn-fab {
+  position: fixed;
+  bottom: 4rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  border: 3px solid white;
+  box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4);
+  transition: var(--transition);
+  z-index: 1000;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.btn-fab:hover {
+  transform: scale(1.1);
+  background: var(--secondary-blue);
+  box-shadow: 0 8px 25px rgba(0, 51, 102, 0.5);
+}
+
+/* Tableaux modernes */
+.table {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.table thead th {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(102, 126, 234, 0.05);
+  transform: scale(1.01);
+  transition: var(--transition);
+}
+
+/* Neutraliser complètement les styles Bootstrap de focus */
+.form-control,
+.form-select {
+  border: 2px solid #e1e5e9 !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  transition: none !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.form-control:active,
+.form-select:active {
+  border: 2px solid var(--primary-blue) !important;
+  box-shadow: none !important;
+  background: white !important;
+  outline: none !important;
+  background-color: white !important;
+}
+
+/* Input groups */
+.input-group .form-control:focus {
+  border: 2px solid var(--primary-blue);
+  box-shadow: none;
+}
+
+.input-group-text {
+  border: 2px solid #e1e5e9;
+  background: var(--primary-blue);
+  color: white;
+}
+
+.input-group:focus-within .input-group-text {
+  border-color: var(--primary-blue);
+}
+
+.input-group .form-control {
+  border-left: none;
+}
+
+.input-group .form-control:focus {
+  border-left: 2px solid var(--primary-blue);
+}
+
+/* Alertes modernes */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+/* Badges modernes */
+.badge {
+  border-radius: 20px;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn-fab {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+/* Dashboard spécifique */
+.dashboard-stats .card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  color: #2c3e50;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-stats .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(52, 152, 219, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dashboard-stats .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-stats .card:hover::before {
+  opacity: 1;
+}
+
+.dashboard-stats .card .card-body h5 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  text-shadow: none;
+}
+
+.dashboard-stats .card .card-body p {
+  opacity: 0.8;
+  font-weight: 500;
+  color: #6c757d;
+  text-shadow: none;
+}
+
+/* Sidebar */
+.sidebar {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+/* Pagination moderne */
+.pagination .page-link {
+  border-radius: 8px;
+  margin: 0 2px;
+  border: 2px solid #e1e5e9;
+  color: #667eea;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.pagination .page-link:hover {
+  background: var(--primary-gradient);
+  border-color: #667eea;
+  color: white;
+}
+
+.pagination .page-item.active .page-link {
+  background: var(--primary-gradient);
+  border-color: #667eea;
+}
+
+/* Loading spinner */
+.spinner-border {
+  color: #667eea;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a67d8;
+}
+
+/* Section d'accueil moderne */
+.main-content-placeholder {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 25%, #dee2e6 50%, #ced4da 75%, #adb5bd 100%);
+  background-size: 300% 300%;
+  animation: subtleGradient 20s ease infinite;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.main-content-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.1) 0%, transparent 50%);
+}
+
+.main-content-placeholder img {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
+  max-width: 200px;
+  margin-bottom: 1.5rem;
+}
+
+.main-content-placeholder img:hover {
+  transform: scale(1.03);
+}
+
+.main-content-placeholder h2 {
+  position: relative;
+  z-index: 2;
+  color: #495057;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin: 1rem 0 0.5rem 0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  line-height: 1.4;
+}
+
+.main-content-placeholder p {
+  position: relative;
+  z-index: 2;
+  color: #6c757d;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+@keyframes subtleGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Assurer que le dropdown fonctionne correctement */
+.navbar-nav .dropdown {
+  position: relative !important;
+}
+
+.navbar-nav .dropdown-toggle {
+  cursor: pointer !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-nav .dropdown-toggle::after {
+  margin-left: 0.5rem;
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.navbar .dropdown {
+  position: relative !important;
+}
+
+.navbar .dropdown-menu {
+  background: rgba(52, 58, 64, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  z-index: 1050;
+  min-width: 200px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
+
+.navbar .dropdown-item {
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .dropdown-item:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Debug: Show dropdown on hover */
+.navbar .dropdown:hover .dropdown-menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Responsive pour la section d'accueil */
+@media (max-width: 768px) {
+  .main-content-placeholder {
+    padding: 1rem;
+  }
+
+  .main-content-placeholder h2 {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .main-content-placeholder p {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .main-content-placeholder img {
+    max-width: 150px;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Styles institutionnels supplémentaires */
+
+/* Tableaux */
+.table {
+  color: var(--text-dark);
+}
+
+.table thead th {
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr:hover {
+  background: rgba(0, 51, 102, 0.05);
+}
+
+.form-label {
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Badges */
+.badge {
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Alertes */
+.alert {
+  border: none;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.alert-success {
+  background: rgba(46, 139, 87, 0.1);
+  border-left-color: var(--accent-green);
+  color: #155724;
+}
+
+.alert-danger {
+  background: rgba(220, 53, 69, 0.1);
+  border-left-color: #dc3545;
+  color: #721c24;
+}
+
+.alert-info {
+  background: rgba(77, 111, 143, 0.1);
+  border-left-color: var(--secondary-blue);
+  color: #0c5460;
+}
+
+/* Footer institutionnel */
+.footer {
+  background: var(--primary-blue);
+  color: white;
+  border-top: 3px solid var(--secondary-blue);
+}
+
+/* Animations subtiles */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Accessibilité améliorée */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible pour accessibilité */
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 1px;
+}
+
+/* Pagination personnalisée */
+.pagination .page-link {
+  color: var(--primary-blue);
+  background-color: white;
+  border: 1px solid var(--primary-blue);
+  border-radius: 6px;
+  margin: 0 2px;
+  transition: var(--transition);
+}
+
+.pagination .page-link:hover {
+  color: white;
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: white;
+}
+
+.pagination .page-item.active .page-link:hover {
+  background-color: var(--secondary-blue);
+  border-color: var(--secondary-blue);
+  color: white;
+}
+
+/* Boutons outline pour interface gouvernementale */
+.btn-outline-primary {
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  background: transparent;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+}
+
+.btn-outline-primary:active,
+.btn-outline-primary.active {
+  color: white !important;
+  background: var(--secondary-blue) !important;
+  border-color: var(--secondary-blue) !important;
+  box-shadow: 0 2px 8px rgba(0, 51, 102, 0.4) !important;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 51, 102, 0.25);
+}
+
+/* Styles pour les groupes de boutons dans les tableaux */
+.btn-group .btn {
+  border-radius: 20px !important;
+  margin: 0 1px;
+}
+
+.btn-group .btn-outline-primary {
+  border-width: 1px;
+}
+
+.btn-group .btn-outline-primary:hover {
+  border-width: 1px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de votre ticket</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td style="padding: 20px 0;">
+                <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 5px;">
+                    <!-- Header -->
+                    <tr>
+                        <td align="center" style="padding: 20px; background-color: #0d6efd; color: #ffffff; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                            <h1 style="margin: 0; font-size: 24px;">SUPPORT GMC</h1>
+                        </td>
+                    </tr>
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 30px; font-size: 16px; line-height: 1.6; color: #333333;">
+                            <h2 style="color: #0d6efd;">Confirmation de votre demande #{{ticket_id}}</h2>
+                            <p>Bonjour {{user_name}},</p>
+                            <p>Nous avons bien reçu votre demande et une demande a été créée avec les informations suivantes :</p>
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding: 10px; background-color: #f9f9f9; border: 1px solid #dddddd;">
+                                        <strong>Sujet :</strong> {{ticket_title}}
+                                    </td>
+                                </tr>
+                            </table>
+                            <p>Votre demande est actuellement en <strong>position n°{{ticket_position}}</strong> dans notre file d'attente générale.</p>
+                            <p>Pour information, il y a actuellement <strong>{{high_priority_count}} demande(s) à priorité haute ou urgente</strong> en cours de traitement par nos équipes. Nous vous remercions de votre patience.</p>
+                            <p>Vous pouvez suivre l'évolution de votre demande en cliquant sur le bouton ci-dessous :</p>
+                            <p style="text-align: center; margin-top: 30px;">
+                                <a href="{{ticket_url}}" style="display: inline-block; background-color: #0d6efd; color: #ffffff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Voir ma demande #{{ticket_id}}</a>
+                            </p>
+                            <p>L'équipe du Support Technique</p>
+                        </td>
+                    </tr>
+                    <!-- Footer -->
+                    <tr>
+                        <td align="center" style="padding: 20px; background-color: #f8f9fa; color: #888888; font-size: 12px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                            <p style="margin: 0;">Ceci est un e-mail automatique, merci de ne pas y répondre.</p>
+                            <p style="margin: 0;">&copy; 2025 SUPPORT GMC. Tous droits réservés.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

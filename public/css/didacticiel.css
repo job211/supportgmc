@@ -1,0 +1,168 @@
+:root {
+    --tuto-bg: #f4f7f9;
+    --tuto-card-bg: #ffffff;
+    --tuto-text: #333;
+    --tuto-text-muted: #777;
+    --tuto-border: #e9ecef;
+    --tuto-shadow-light: 0 4px 12px rgba(0,0,0,0.08);
+    --tuto-shadow-hover: 0 8px 20px rgba(0,0,0,0.12);
+    --tuto-primary: #6c757d; /* Default for guest */
+}
+.role-admin { --tuto-primary: #0d6efd; }
+.role-agent { --tuto-primary: #dc3545; }
+.role-user { --tuto-primary: #0dcaf0; }
+
+body {
+    background-color: var(--tuto-bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--tuto-text);
+}
+
+.tuto-header {
+    padding: 1rem 0;
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* z-index standard pour les headers sticky Bootstrap */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.tuto-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tuto-header .btn { transition: all 0.3s ease; }
+.tuto-header .badge { font-size: 0.9rem; font-weight: 600; }
+.tuto-header h1 { font-weight: 700; }
+.tuto-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem 0 50px;
+}
+.tuto-timeline::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background: var(--tuto-border);
+    top: 28px;
+    bottom: 28px;
+    left: 20px;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.tuto-card {
+    margin-bottom: 3rem;
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+.tuto-card:nth-child(1) { animation-delay: 0.1s; }
+.tuto-card:nth-child(2) { animation-delay: 0.2s; }
+.tuto-card:nth-child(3) { animation-delay: 0.3s; }
+.tuto-card:nth-child(4) { animation-delay: 0.4s; }
+.tuto-card:nth-child(5) { animation-delay: 0.5s; }
+
+.tuto-card-point {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--tuto-primary);
+    border: 4px solid var(--tuto-bg);
+    top: 20px;
+    left: -30px;
+    z-index: 10;
+}
+.tuto-card-icon { display: none; }
+.tuto-card-content {
+    background: var(--tuto-card-bg);
+    border-radius: 0.75rem;
+    box-shadow: var(--tuto-shadow-light);
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tuto-card:hover .tuto-card-content { transform: translateY(-5px); box-shadow: var(--tuto-shadow-hover); }
+.tuto-card-img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid var(--tuto-border);
+}
+.tuto-card-body {
+    padding: 1.5rem 2rem;
+}
+.tuto-card-number { font-size: 0.8rem; font-weight: 600; color: var(--tuto-primary); letter-spacing: 1px; margin-bottom: 0.5rem; display: block; }
+.tuto-card-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; }
+.tuto-card-desc { color: var(--tuto-text-muted); font-size: 1.05rem; line-height: 1.6; }
+@media (max-width: 767px) {
+    .tuto-timeline { padding-left: 40px; }
+    .tuto-card-point { left: -21px; }
+    .tuto-card-body { padding: 1.5rem; }
+    .tuto-card-title { font-size: 1.4rem; }
+}
+
+.tuto-card-img-container a {
+    display: block;
+    cursor: zoom-in;
+    transition: opacity 0.3s ease;
+}
+.tuto-card-img-container a:hover {
+    opacity: 0.85;
+}
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    padding: 1rem;
+}
+.lightbox-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.lightbox-overlay.visible .lightbox-content {
+    transform: scale(1);
+}
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #6c757d; /* Gris foncé */
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+.lightbox-close:hover { transform: scale(1.1); }

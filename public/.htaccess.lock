@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Définit le dossier de base pour les règles de réécriture.
+    RewriteBase /ticketdigitalpalladium/public/
+
+    # Redirige une requête avec .php vers la même URL sans .php (ex: /login.php -> /login)
+    RewriteCond %{THE_REQUEST} /([^/]+?)\.php[\s?] [NC]
+    RewriteRule ^ %1 [L,R=301]
+
+    # Résout en interne une requête sans .php vers le fichier .php correspondant
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.+)$ $1.php [L,QSA]
+</IfModule>

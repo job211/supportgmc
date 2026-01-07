@@ -1,0 +1,596 @@
+/* public/css/style.css */
+
+/* --- Styles pour les bulles de chat (type WhatsApp) --- */
+.message {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.message-sent {
+    flex-direction: row-reverse;
+}
+
+.message-received {
+    flex-direction: row;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.message-sent .message-bubble {
+    background-color: #dcf8c6; /* Vert clair pour les messages envoyés */
+    border-bottom-right-radius: 4px;
+}
+
+.message-received .message-bubble {
+    background-color: #ffffff; /* Blanc pour les messages reçus */
+    border-bottom-left-radius: 4px;
+}
+
+.message-author {
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: #075e54; /* Vert foncé pour le nom de l'auteur */
+}
+
+.message-sent .message-author {
+    color: #128c7e; /* Vert plus clair pour l'auteur du message envoyé */
+}
+
+.message-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    color: #a0a0a0;
+    text-align: right;
+    margin-top: 5px;
+    clear: both;
+}
+
+.system-message {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.system-message .badge {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    border-radius: 15px;
+    background-color: #e7f3ff !important;
+    color: #555 !important;
+    font-weight: 400;
+}
+
+.chat-body {
+    background-color: #e5ddd5; /* Fond de chat type WhatsApp */
+    background-image: url('../img/whatsapp_bg.png');
+}
+
+
+/* --- Professional Header Styles - Version Institutionnelle --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+.navbar-custom {
+    background: linear-gradient(90deg, #003366 0%, #4D6F8F 100%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #2E8B57;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.navbar-custom .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.navbar-custom .nav-link:hover, .navbar-custom .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-custom .navbar-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.navbar-custom .btn-link {
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .btn-link:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* --- End Professional Header Styles --- */
+
+/* Styles pour la mise en page de type application de messagerie */
+.app-layout {
+    display: flex;
+    position: fixed;
+    top: 70px; /* Hauteur de la navbar */
+    bottom: 70px; /* Hauteur du footer */
+    left: 0;
+    right: 0;
+    background-color: var(--background-white);
+}
+
+.ticket-list-sidebar {
+    width: 100%;
+    max-width: 420px;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-white);
+}
+
+.sidebar-header {
+    padding: 1rem;
+    background-color: #f0f2f5;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.ticket-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.ticket-item a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #f0f2f5;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.ticket-item:hover a {
+    background-color: #f5f5f5;
+}
+
+.ticket-item .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.ticket-info {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.ticket-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.ticket-title {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket-time {
+    font-size: 0.8rem;
+    color: #667781;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.ticket-status {
+    font-size: 0.9rem;
+    color: #54656f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket-status .badge {
+    font-size: 0.75rem;
+    padding: 0.3em 0.6em;
+}
+
+.main-content-placeholder {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url('../img/whatsapp_bg.png') repeat;
+    text-align: center;
+    color: #54656f;
+    border-left: 1px solid var(--border-color);
+}
+
+.main-content-placeholder h2 {
+    margin-top: 1rem;
+    font-weight: 300;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+}
+
+/* Ajustements pour la nouvelle mise en page */
+.container.mt-4 {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+/* --- Fixed Layout Styles --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    padding-top: 80px; /* Adjusted for new navbar height */
+    padding-bottom: 70px; /* Space for fixed footer */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: var(--background-white);
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    display: block !important;
+}
+/* --- End Fixed Layout Styles --- */
+
+/* Palette de couleurs inspirée de WhatsApp */
+:root {
+    --primary-color: #075E54; /* Vert foncé WhatsApp */
+    --secondary-color: #128C7E; /* Vert plus clair */
+    --accent-color: #25D366; /* Vert "action" (boutons, etc.) */
+    --background-light: #ECE5DD; /* Fond texturé clair */
+    --background-chat: #E5DDD5; /* Fond de la zone de chat */
+    --background-white: #FFFFFF;
+    --text-dark: #333333;
+    --text-light: #FAFAFA;
+    --message-out-bg: #DCF8C6; /* Bulle de message sortant */
+    --message-in-bg: #FFFFFF; /* Bulle de message entrant */
+    --border-color: #DDDDDD;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les conteneurs de page (login, etc.) */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px); /* Adjusted for fixed header/footer */
+    padding: 1rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--background-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    overflow: hidden;
+    border: none;
+}
+
+.auth-header {
+    background-color: #dc3545;
+    color: var(--text-light);
+    padding: 2rem;
+    text-align: center;
+}
+
+.auth-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.auth-body {
+    padding: 2rem;
+}
+
+/* Bouton d'action flottant (FAB) */
+.btn-fab {
+    position: fixed;
+    bottom: 75px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #dc3545; /* Rouge */
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1050;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.btn-fab:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Style pour les formulaires */
+.form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.25rem rgba(18, 140, 126, 0.25);
+}
+
+/* Style pour les boutons */
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transition: background-color 0.3s;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:focus {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(18, 140, 126, 0.5);
+}
+
+.btn-primary:active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.link-secondary {
+    color: var(--secondary-color) !important;
+    text-decoration: none;
+}
+
+.link-secondary:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Styles pour la vue conversation (view_ticket.php) */
+.chat-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 56px); /* Hauteur totale moins la navbar */
+    background-color: #e5ddd5; /* Fond type WhatsApp */
+    background-image: url('../img/whatsapp_bg.png');
+}
+
+.chat-header {
+    padding: 0.75rem 1rem;
+    background-color: #f0f2f5;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.chat-header .ticket-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.chat-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    word-wrap: break-word;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.message-bubble .message-content {
+    margin-bottom: 0.25rem;
+}
+
+.message-bubble .message-meta {
+    font-size: 0.75rem;
+    color: #667781;
+    text-align: right;
+}
+
+.message-bubble .message-author {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+/* Message de l'interlocuteur (agent/admin) */
+.message-bubble.is-receiver {
+    background-color: #fff;
+    align-self: flex-start;
+    border-top-left-radius: 0;
+}
+
+/* Message de l'utilisateur connecté (créateur du ticket) */
+.message-bubble.is-sender {
+    background-color: #d9fdd3; /* Vert clair WhatsApp */
+    align-self: flex-end;
+    border-top-right-radius: 0;
+}
+
+.message-bubble.is-sender .message-author {
+    color: #005c4b; /* Un vert plus foncé */
+}
+
+.chat-footer {
+    padding: 1rem;
+    background-color: #f0f2f5;
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.chat-footer form {
+    display: flex;
+    align-items: center;
+}
+
+.chat-footer textarea {
+    flex-grow: 1;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    resize: none;
+    margin-right: 1rem;
+    min-height: 40px;
+    max-height: 120px;
+}
+
+.chat-footer button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.chat-footer button:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.ticket-details-bar {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border-left: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 350px;
+    overflow-y: auto;
+}
+
+.ticket-details-bar h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.details-item {
+    margin-bottom: 0.75rem;
+}
+
+.details-item label {
+    font-weight: bold;
+    display: block;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.details-item span,
+.details-item .badge {
+    font-size: 1rem;
+}
+
+.system-message {
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.system-message .badge {
+    background-color: #e2f3ff;
+    color: #555;
+    padding: 0.4rem 0.8rem;
+    font-weight: normal;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+footer {
+    width: 100%;
+}

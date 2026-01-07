@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Le chemin vers le favicon est maintenant dynamique -->
+    <link rel="icon" href="/img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPPORT GMC</title>
+    
+    <!-- --- AMÉLIORATION : Dépendances locales --- -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="/vendor/chart.js/chart.umd.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom CSS : Le chemin est maintenant dynamique -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/modern-style.css">
+
+    <!-- DataTables CSS for Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/index.php"><i class="fas fa-ticket-alt me-2"></i>SUPPORT GMC</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                        <a class="nav-link" href="/login.php">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register.php">Inscription</a>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container-fluid mt-4">
+
+
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Connexion</h1>
+        </div>
+        <div class="auth-body">
+            <div class="alert alert-danger">La vérification de sécurité a échoué. Veuillez réessayer.</div>            <form action="/login.php" method="post">
+                <input type="hidden" name="csrf_token" value="7c6d54f8c580b62ecf04ca8b2dc41ee907d254e107e806a72a69b0a7326dd3dc">
+                
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="username" class="form-control " value="" required>
+                    <span class="invalid-feedback"></span>
+                </div>    
+                
+                <div class="mb-4">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" name="password" id="password" class="form-control " required>
+                    <span class="invalid-feedback"></span>
+                </div>
+                
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-danger">Se connecter</button>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <a href="forgot_password.php"><i class="fas fa-key me-1"></i>Mot de passe oublié ?</a>
+                    <a href="register.php"><i class="fas fa-user-plus me-1"></i>Pas de compte ?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</main> <!-- Fin du container-fluid qui est ouvert dans header.php -->
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">  2026 SUPPORT GMC. Tous droits réservés.</span>
+    </div>
+</footer>
+
+<!-- Bootstrap Bundle with Popper (local) -->
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- DataTables Core JS -->
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<!-- DataTables Bootstrap 5 Integration -->
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+
+</body>
+</html>
