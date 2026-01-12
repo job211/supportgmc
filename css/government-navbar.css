@@ -1,0 +1,496 @@
+/* ========================================
+   NAVBAR GOUVERNEMENTALE ULTRA-COMPACTE
+   Fichier: government-navbar.css
+   ======================================== */
+
+/* RESET ET BASE - Éviter conflits Bootstrap */
+.navbar-government {
+    /* Background gouvernemental */
+    background: linear-gradient(135deg, 
+        #0a1628 0%,
+        #1a2642 20%,
+        #2d3e5f 40%,
+        #1a2642 60%,
+        #0a1628 100%
+    ) !important;
+    
+    /* Hauteur ultra-compacte */
+    min-height: 50px !important;
+    height: 50px !important;
+    padding: 0 1rem !important;
+    
+    /* Effets visuels */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(10, 22, 40, 0.5);
+    border-bottom: 3px solid #d4af37;
+    backdrop-filter: blur(10px);
+    z-index: 1030;
+}
+
+/* Motif géométrique subtil */
+.navbar-government::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(212, 175, 55, 0.02) 50px, rgba(212, 175, 55, 0.02) 100px),
+        repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(255, 255, 255, 0.01) 50px, rgba(255, 255, 255, 0.01) 100px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Effet lueur dorée */
+.navbar-government::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+    animation: pulse-glow 8s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* Container - Hauteur fixe */
+.navbar-government .container-fluid {
+    height: 50px !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   LOGO ET BRAND - ULTRA COMPACT
+   ======================================== */
+.navbar-government .navbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    height: 50px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    text-decoration: none !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-government .navbar-brand:hover {
+    color: #d4af37 !important;
+    transform: scale(1.02);
+}
+
+/* Logo image (si présente) */
+.navbar-government .gov-logo-img {
+    width: 32px !important;
+    height: 32px !important;
+    margin-right: 8px !important;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Logo circulaire custom */
+.navbar-government .logo-circle {
+    width: 32px !important;
+    height: 32px !important;
+    background: #ff3333;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 8px !important;
+    box-shadow: 0 3px 10px rgba(255, 51, 51, 0.5);
+    border: none;
+}
+
+.navbar-government .logo-circle span {
+    font-size: 1.2rem !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding-left: 6px;
+}
+
+/* ========================================
+   NAVBAR COLLAPSE - COMPACT
+   ======================================== */
+.navbar-government .navbar-collapse {
+    height: 50px !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   MENU NAVIGATION - HAUTEUR FIXE
+   ======================================== */
+.navbar-government .navbar-nav {
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+}
+
+.navbar-government .nav-item {
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 2px !important;
+}
+
+/* ========================================
+   LIENS DE NAVIGATION - COMPACT
+   ======================================== */
+.navbar-government .nav-link {
+    display: flex !important;
+    align-items: center !important;
+    height: 50px !important;
+    padding: 0 12px !important;
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    text-decoration: none !important;
+    letter-spacing: 0.3px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+    background: none !important;
+}
+
+.navbar-government .nav-link:hover,
+.navbar-government .nav-link:focus {
+    color: #d4af37 !important;
+    background: rgba(212, 175, 55, 0.1) !important;
+    border-bottom-color: #d4af37;
+    transform: translateY(-1px);
+}
+
+.navbar-government .nav-link.active {
+    color: #d4af37 !important;
+    border-bottom-color: #d4af37;
+}
+
+/* Icônes dans les liens */
+.navbar-government .nav-link i {
+    font-size: 0.875rem !important;
+    margin-right: 6px !important;
+    color: inherit !important;
+    transition: all 0.3s ease;
+}
+
+.navbar-government .nav-link:hover i {
+    color: #d4af37 !important;
+    transform: scale(1.1);
+}
+
+/* Texte des liens */
+.navbar-government .nav-link span {
+    font-size: 0.875rem !important;
+}
+
+/* ========================================
+   SÉPARATEUR VERTICAL
+   ======================================== */
+.navbar-government .nav-separator {
+    width: 1px !important;
+    height: 30px !important;
+    background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.4), transparent);
+    margin: 0 8px !important;
+}
+
+/* ========================================
+   BOUTON UTILISATEUR - COMPACT
+   ======================================== */
+.navbar-government .gov-user-btn {
+    display: flex !important;
+    align-items: center !important;
+    height: 36px !important;
+    padding: 0 12px !important;
+    background: rgba(212, 175, 55, 0.12) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    border-radius: 20px !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.15);
+}
+
+.navbar-government .gov-user-btn:hover {
+    background: rgba(212, 175, 55, 0.2) !important;
+    border-color: #d4af37 !important;
+    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Avatar utilisateur */
+.navbar-government .gov-user-avatar {
+    width: 24px !important;
+    height: 24px !important;
+    background: linear-gradient(135deg, #d4af37 0%, #b8962a 100%);
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 6px !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+}
+
+.navbar-government .gov-user-avatar i {
+    font-size: 0.65rem !important;
+    color: white !important;
+}
+
+/* Chevron down */
+.navbar-government .gov-user-btn .fa-chevron-down {
+    font-size: 0.65rem !important;
+    margin-left: 6px !important;
+    transition: transform 0.3s ease;
+}
+
+.navbar-government .gov-user-btn[aria-expanded="true"] .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* ========================================
+   DROPDOWN MENU - STYLE GOUVERNEMENTAL
+   ======================================== */
+.navbar-government .dropdown-menu {
+    background: linear-gradient(135deg, #0f1829 0%, #1a2642 100%) !important;
+    border: 2px solid #d4af37 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15) !important;
+    margin-top: 8px !important;
+    padding: 8px !important;
+    min-width: 220px !important;
+}
+
+.navbar-government .dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 14px !important;
+    margin: 2px 0 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease;
+    border: none !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.navbar-government .dropdown-item:hover,
+.navbar-government .dropdown-item:focus {
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.08)) !important;
+    color: #d4af37 !important;
+    padding-left: 20px !important;
+    border-left: 3px solid #d4af37 !important;
+}
+
+.navbar-government .dropdown-item i {
+    width: 20px !important;
+    margin-right: 10px !important;
+    font-size: 0.875rem !important;
+    color: inherit !important;
+}
+
+.navbar-government .dropdown-divider {
+    border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+    margin: 6px 0 !important;
+}
+
+/* ========================================
+   BOUTON HAMBURGER MOBILE
+   ======================================== */
+.navbar-government .navbar-toggler {
+    height: 36px !important;
+    padding: 6px 10px !important;
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    border-radius: 6px !important;
+    background: rgba(212, 175, 55, 0.1) !important;
+    transition: all 0.3s ease;
+}
+
+.navbar-government .navbar-toggler:hover {
+    background: rgba(212, 175, 55, 0.2) !important;
+    border-color: #d4af37 !important;
+}
+
+.navbar-government .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25) !important;
+}
+
+.navbar-government .navbar-toggler-icon {
+    width: 20px !important;
+    height: 20px !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28212, 175, 55, 0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* ========================================
+   STATE: SCROLLED - ENCORE PLUS COMPACT
+   ======================================== */
+.navbar-government.scrolled {
+    height: 45px !important;
+    min-height: 45px !important;
+    background: linear-gradient(135deg, #050b14 0%, #0f1829 50%, #050b14 100%) !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7);
+    border-bottom-width: 2px;
+}
+
+.navbar-government.scrolled .container-fluid,
+.navbar-government.scrolled .navbar-collapse,
+.navbar-government.scrolled .navbar-nav,
+.navbar-government.scrolled .nav-item,
+.navbar-government.scrolled .nav-link {
+    height: 45px !important;
+}
+
+/* ========================================
+   RESPONSIVE MOBILE
+   ======================================== */
+@media (max-width: 991.98px) {
+    /* Navbar mobile - hauteur auto */
+    .navbar-government {
+        height: auto !important;
+        min-height: 50px !important;
+    }
+    
+    .navbar-government .container-fluid {
+        height: 50px !important;
+    }
+    
+    /* Collapse menu mobile */
+    .navbar-government .navbar-collapse {
+        height: auto !important;
+        background: rgba(10, 22, 40, 0.98);
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        margin-top: 0;
+        padding: 10px 0;
+    }
+    
+    .navbar-government .navbar-nav {
+        height: auto !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+    }
+    
+    .navbar-government .nav-item {
+        height: auto !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .navbar-government .nav-link {
+        height: 44px !important;
+        padding: 0 20px !important;
+        border-bottom: none !important;
+        border-left: 3px solid transparent;
+        justify-content: flex-start !important;
+    }
+    
+    .navbar-government .nav-link:hover {
+        border-left-color: #d4af37;
+    }
+    
+    .navbar-government .nav-separator {
+        display: none !important;
+    }
+    
+    .navbar-government .gov-user-btn {
+        width: calc(100% - 40px) !important;
+        margin: 0 20px !important;
+        justify-content: flex-start !important;
+    }
+}
+
+/* Tablette */
+@media (max-width: 768px) {
+    .navbar-government .navbar-brand {
+        font-size: 1rem !important;
+    }
+    
+    .navbar-government .logo-circle,
+    .navbar-government .gov-logo-img {
+        width: 28px !important;
+        height: 28px !important;
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar-government {
+    animation: slideInFromTop 0.4s ease-out;
+}
+
+/* ========================================
+   THÈME SOMBRE - ADJUSTMENTS
+   ======================================== */
+[data-theme="dark"] .navbar-government {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%) !important;
+    border-bottom-color: #b8962a;
+}
+
+[data-theme="dark"] .navbar-government .dropdown-menu {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%) !important;
+}
+
+/* ========================================
+   FIXES CONFLITS BOOTSTRAP
+   ======================================== */
+.navbar-government * {
+    box-sizing: border-box;
+}
+
+.navbar-government .navbar-nav > .nav-item > .nav-link {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.navbar-government .dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Fix pour les boutons dans dropdown */
+.navbar-government .dropdown-item[type="submit"] {
+    width: 100% !important;
+    text-align: left !important;
+}

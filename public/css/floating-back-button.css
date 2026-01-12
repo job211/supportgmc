@@ -1,0 +1,108 @@
+/* Floating Back Button - Always Visible */
+
+.floating-back-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.3s ease;
+}
+
+/* Hidden state (after inactivity) */
+.floating-back-button.hidden {
+    opacity: 0.3;
+    transform: scale(0.9) translateY(5px);
+}
+
+/* Button styles */
+.floating-back-button .btn-floating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.floating-back-button .btn-floating:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.6);
+    background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+}
+
+.floating-back-button .btn-floating:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-back-button {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+    
+    .floating-back-button .btn-floating {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .floating-back-button {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .floating-back-button .btn-floating {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Animation - fade in/out */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Accessibility */
+.floating-back-button .btn-floating:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Print styles - hide on print */
+@media print {
+    .floating-back-button {
+        display: none;
+    }
+}

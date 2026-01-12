@@ -2,65 +2,291 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once '../includes/session.php';
-// La session est gérée via header.php qui inclut session.php
-
-// Inclure le fichier de configuration de la base de données
-// require_once '../config/database.php'; // Sera nécessaire plus tard
-
-// Inclure l'en-tête
 require_once '../config/database.php';
 
-// Définir les variables de filtre pour les utiliser dans le formulaire et la requête
 $status_filter = isset($_GET['status']) ? $_GET['status'] : '';
 $type_filter = isset($_GET['type_id']) ? $_GET['type_id'] : '';
 
 include '../includes/header.php';
 ?>
 
+<style>
+    .app-layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 24px;
+        padding: 24px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 100%);
+        min-height: calc(100vh - 100px);
+    }
+
+    .ticket-list-sidebar {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 51, 102, 0.08);
+        overflow: hidden;
+        border: 1px solid rgba(0, 51, 102, 0.05);
+    }
+
+    .sidebar-header {
+        padding: 20px;
+        background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%);
+        color: white;
+    }
+
+    .sidebar-header h4 {
+        margin: 0 0 16px 0;
+        font-weight: 700;
+        font-size: 1.3rem;
+    }
+
+    .sidebar-header form {
+        margin: 16px 0 0 0;
+    }
+
+    .sidebar-header .form-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .sidebar-header .form-select {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .sidebar-header .form-select option {
+        background: #003366;
+        color: white;
+    }
+
+    .sidebar-header .btn-secondary {
+        background: linear-gradient(135deg, #2E8B57 0%, #28a745 100%);
+        border: none;
+        color: white;
+        font-weight: 600;
+        border-radius: 6px;
+        padding: 0.6rem 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-header .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(46, 139, 87, 0.3);
+    }
+
+    .ticket-list {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0;
+    }
+
+    .ticket-item {
+        border: none !important;
+        border-bottom: 1px solid rgba(0, 51, 102, 0.05) !important;
+        transition: all 0.3s ease;
+        padding: 12px 16px !important;
+    }
+
+    .ticket-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .ticket-item:hover {
+        background: linear-gradient(90deg, rgba(46, 139, 87, 0.05) 0%, transparent 100%);
+        border-left: 3px solid #2E8B57 !important;
+        padding-left: 13px !important;
+    }
+
+    .ticket-item a {
+        transition: all 0.3s ease;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #2E8B57 0%, #28a745 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 0.85rem;
+        box-shadow: 0 2px 6px rgba(46, 139, 87, 0.2);
+    }
+
+    .ticket-item h5 {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #003366;
+    }
+
+    .main-content-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 51, 102, 0.08);
+        border: 1px solid rgba(0, 51, 102, 0.05);
+        padding: 60px 40px;
+        text-align: center;
+    }
+
+    .main-content-placeholder img {
+        opacity: 0.7;
+        margin-bottom: 24px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .main-content-placeholder h2 {
+        color: #003366;
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+
+    .main-content-placeholder p {
+        color: #4D6F8F;
+        font-size: 1.1rem;
+    }
+
+    .btn-fab {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #2E8B57 0%, #28a745 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 32px;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(46, 139, 87, 0.4);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 300;
+        line-height: 1;
+        z-index: 1000;
+    }
+
+    .btn-fab:hover {
+        transform: scale(1.1) translateY(-3px);
+        box-shadow: 0 10px 30px rgba(46, 139, 87, 0.6);
+    }
+
+    .btn-fab:active {
+        transform: scale(0.95);
+    }
+
+    .pagination {
+        padding: 12px 0;
+        background: rgba(0, 51, 102, 0.02);
+        border-top: 1px solid rgba(0, 51, 102, 0.05);
+    }
+
+    .page-link {
+        color: #003366;
+        border: 1px solid rgba(0, 51, 102, 0.1);
+        border-radius: 4px;
+        margin: 0 2px;
+    }
+
+    .page-link:hover {
+        background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%);
+        color: white;
+        border-color: #003366;
+    }
+
+    .page-item.active .page-link {
+        background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%);
+        border-color: #003366;
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, rgba(46, 139, 87, 0.1) 0%, rgba(40, 167, 69, 0.1) 100%);
+        border: 1px solid rgba(46, 139, 87, 0.3);
+        color: #155724;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .app-layout {
+            grid-template-columns: 1fr;
+            padding: 12px;
+        }
+
+        .ticket-list-sidebar {
+            max-height: 50vh;
+        }
+
+        .main-content-placeholder {
+            display: none;
+        }
+    }
+</style>
+
 <?php
 if(isset($_GET['ticket_created']) && $_GET['ticket_created'] == 'true'){
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Votre ticket a été créé avec succès.
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 20px 24px 0 24px;">
+            <i class="fas fa-check-circle me-2"></i>Votre ticket a été créé avec succès !
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
 }
 ?>
 
 <div class="app-layout">
-    <a href="create_ticket.php" class="btn-fab" title="Ouvrir un nouveau ticket">+</a>
-    <aside class="ticket-list-sidebar">
+    <a href="create_ticket.php" class="btn-fab" role="button" tabindex="0" title="Créer un nouveau ticket" aria-label="Créer un nouveau ticket">+</a>
+    <aside class="ticket-list-sidebar" role="region" aria-label="Liste de mes tickets">
         <div class="sidebar-header">
-            <div class="d-flex justify-content-between align-items-center">
-                <h4>Mes Tickets</h4>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h4><i class="fas fa-ticket-alt me-2"></i>Mes Tickets</h4>
             </div>
             <?php
-            // Récupérer tous les types de tickets pour le filtre
             $sql_types = "SELECT id, name FROM ticket_types ORDER BY name";
             $result_types = mysqli_query($link, $sql_types);
             $ticket_types = mysqli_fetch_all($result_types, MYSQLI_ASSOC);
             ?>
-            <form action="index.php" method="get" class="row g-3 align-items-center mb-3">
-                <div class="col-md-5">
+            <form action="index.php" method="get" class="row g-2 align-items-end" role="search" aria-label="Filtrer les tickets">
+                <div class="col-md-6">
                     <label for="status_filter" class="form-label">Statut</label>
-                    <select name="status" id="status_filter" class="form-select">
-                        <option value="">Tous les statuts</option>
+                    <select name="status" id="status_filter" class="form-select form-select-sm" aria-label="Filtrer par statut de ticket">
+                        <option value="">Tous</option>
                         <option value="Ouvert" <?= ($status_filter == 'Ouvert') ? 'selected' : '' ?>>Ouvert</option>
                         <option value="En cours" <?= ($status_filter == 'En cours') ? 'selected' : '' ?>>En cours</option>
                         <option value="Fermé" <?= ($status_filter == 'Fermé') ? 'selected' : '' ?>>Fermé</option>
-                        <option value="En attente" <?= ($status_filter == 'En attente') ? 'selected' : '' ?>>En attente</option>
+                        <option value="En attente" <?= ($status_filter == 'En attente') ? 'selected' : '' ?>>Attente</option>
                     </select>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <label for="type_filter" class="form-label">Type</label>
-                    <select name="type_id" id="type_filter" class="form-select">
-                        <option value="">Tous les types</option>
+                    <select name="type_id" id="type_filter" class="form-select form-select-sm" aria-label="Filtrer par type de ticket">
+                        <option value="">Tous</option>
                         <?php foreach($ticket_types as $type): ?>
                             <option value="<?= $type['id'] ?>" <?= ($type_filter == $type['id']) ? 'selected' : '' ?>><?= htmlspecialchars($type['name']) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-secondary w-100">Filtrer</button>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-secondary w-100" aria-label="Appliquer les filtres" title="Appliquer les filtres pour les tickets"><i class="fas fa-filter me-2" aria-hidden="true"></i>Filtrer</button>
                 </div>
             </form>
         </div>

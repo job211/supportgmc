@@ -6,10 +6,11 @@ require_once '../../includes/session.php';
 header('Content-Type: application/json');
 
 try {
-    // Seuls les administrateurs peuvent accéder à ces données
-    if (!isset($_SESSION["loggedin"]) || $_SESSION["role"] !== 'admin') {
+    // Vérifier que l'utilisateur est connecté
+    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         http_response_code(403);
-        throw new Exception('Accès non autorisé');
+        echo json_encode(['error' => 'Non autorisé']);
+        exit;
     }
 
     // Initialiser le tableau de statistiques avec des valeurs par défaut

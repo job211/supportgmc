@@ -1,0 +1,254 @@
+<?php
+/**
+ * Audit Logging System
+ * Enregistre toutes les actions importantes pour la conformité gouvernementale
+ * Version: 1.0 | Date: 8 Janvier 2026
+ */
+
+/**
+ * Créer la table d'audit logging si elle n'existe pas
+ */
+function init_audit_log_table() {
+    global $link;
+    
+    $sql = "
+    CREATE TABLE IF NOT EXISTS audit_logs (
+        id BIGINT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT,
+        username VARCHAR(50),
+        action VARCHAR(100) NOT NULL COMMENT 'CREATE, READ, UPDATE, DELETE, LOGIN, LOGOUT, etc.',
+        entity_type VARCHAR(50) COMMENT 'tickets, users, tasks, specifications, etc.',
+        entity_id INT,
+        old_values JSON COMMENT 'Valeurs avant modification',
+        new_values JSON COMMENT 'Valeurs après modification',
+        ip_address VARCHAR(45) NOT NULL,
+        user_agent TEXT,
+        status VARCHAR(20) COMMENT 'SUCCESS, FAILURE, BLOCKED',
+        error_message TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        
+        INDEX idx_user_id (user_id),
+        INDEX idx_created_at (created_at),
+        INDEX idx_action (action),
+        INDEX idx_entity (entity_type, entity_id),
+        INDEX idx_ip_address (ip_address),
+        INDEX idx_status (status),
+        FULLTEXT INDEX idx_search (username, action, error_message)
+    ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    ";
+    
+    return mysqli_query($link, $sql);
+}
+
+/**
+ * Enregistrer une action d'audit
+ * @param string $action Type d'action (LOGIN, CREATE_TICKET, UPDATE_USER, etc.)
+ * @param string $entity_type Type d'entité affectée
+ * @param int $entity_id ID de l'entité
+ * @param array $old_values Anciennes valeurs (optionnel)
+ * @param array $new_values Nouvelles valeurs (optionnel)
+ * @param string $status SUCCESS, FAILURE, BLOCKED
+ * @param string $error_message Message d'erreur si applicable
+ */
+function log_audit($action, $entity_type = null, $entity_id = null, $old_values = null, $new_values = null, $status = 'SUCCESS', $error_message = null) {
+    global $link;
+    
+    // Initialiser la table si nécessaire
+    init_audit_log_table();
+    
+    // Obtenir les informations utilisateur
+    $user_id = isset($_SESSION['id']) ? (int)$_SESSION['id'] : null;
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'ANONYMOUS';
+    
+    // Obtenir l'IP et le User-Agent
+    $ip_address = get_client_ip();
+    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'UNKNOWN';
+    
+    // Convertir les arrays en JSON
+    $old_values_json = $old_values ? json_encode($old_values, JSON_UNESCAPED_UNICODE) : null;
+    $new_values_json = $new_values ? json_encode($new_values, JSON_UNESCAPED_UNICODE) : null;
+    
+    $sql = "
+    INSERT INTO audit_logs (
+        user_id, username, action, entity_type, entity_id,
+        old_values, new_values, ip_address, user_agent,
+        status, error_message, created_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+    ";
+    
+    $stmt = mysqli_prepare($link, $sql);
+    if (!$stmt) {
+        error_log("Audit log error: " . mysqli_error($link));
+        return false;
+    }
+    
+    $result = mysqli_stmt_bind_param(
+        $stmt, "isssissssss",
+        $user_id, $username, $action, $entity_type, $entity_id,
+        $old_values_json, $new_values_json, $ip_address, $user_agent,
+        $status, $error_message
+    );
+    
+    if (!$result) {
+        error_log("Audit log bind error: " . mysqli_stmt_error($stmt));
+        return false;
+    }
+    
+    return mysqli_stmt_execute($stmt);
+}
+
+/**
+ * Enregistrer une connexion réussie
+ * @param int $user_id ID de l'utilisateur
+ * @param string $username Nom d'utilisateur
+ */
+function log_login_success($user_id, $username) {
+    log_audit('LOGIN', 'users', $user_id, null, null, 'SUCCESS', null);
+}
+
+/**
+ * Enregistrer une tentative de connexion échouée
+ * @param string $username Nom d'utilisateur
+ * @param string $reason Raison de l'échec
+ */
+function log_login_failure($username, $reason) {
+    log_audit('LOGIN', 'users', null, null, null, 'FAILURE', $reason);
+}
+
+/**
+ * Enregistrer une création de ticket
+ * @param int $ticket_id ID du ticket créé
+ * @param array $ticket_data Données du ticket
+ */
+function log_ticket_created($ticket_id, $ticket_data) {
+    log_audit('CREATE', 'tickets', $ticket_id, null, $ticket_data, 'SUCCESS', null);
+}
+
+/**
+ * Enregistrer une modification de ticket
+ * @param int $ticket_id ID du ticket
+ * @param array $old_data Anciennes données
+ * @param array $new_data Nouvelles données
+ */
+function log_ticket_updated($ticket_id, $old_data, $new_data) {
+    log_audit('UPDATE', 'tickets', $ticket_id, $old_data, $new_data, 'SUCCESS', null);
+}
+
+/**
+ * Enregistrer une suppression de ticket
+ * @param int $ticket_id ID du ticket supprimé
+ * @param array $ticket_data Données du ticket supprimé
+ */
+function log_ticket_deleted($ticket_id, $ticket_data) {
+    log_audit('DELETE', 'tickets', $ticket_id, $ticket_data, null, 'SUCCESS', null);
+}
+
+/**
+ * Enregistrer un changement d'utilisateur
+ * @param int $user_id ID de l'utilisateur
+ * @param array $old_data Anciennes données
+ * @param array $new_data Nouvelles données
+ */
+function log_user_updated($user_id, $old_data, $new_data) {
+    log_audit('UPDATE', 'users', $user_id, $old_data, $new_data, 'SUCCESS', null);
+}
+
+/**
+ * Récupérer les logs d'audit filtrés
+ * @param array $filters Filtres de recherche
+ * @param int $limit Nombre de résultats
+ * @param int $offset Décalage pour pagination
+ * @return array Logs d'audit
+ */
+function get_audit_logs($filters = [], $limit = 100, $offset = 0) {
+    global $link;
+    
+    $where = [];
+    $params = [];
+    $types = '';
+    
+    // Filtres disponibles
+    if (!empty($filters['user_id'])) {
+        $where[] = 'user_id = ?';
+        $params[] = (int)$filters['user_id'];
+        $types .= 'i';
+    }
+    
+    if (!empty($filters['action'])) {
+        $where[] = 'action = ?';
+        $params[] = $filters['action'];
+        $types .= 's';
+    }
+    
+    if (!empty($filters['entity_type'])) {
+        $where[] = 'entity_type = ?';
+        $params[] = $filters['entity_type'];
+        $types .= 's';
+    }
+    
+    if (!empty($filters['status'])) {
+        $where[] = 'status = ?';
+        $params[] = $filters['status'];
+        $types .= 's';
+    }
+    
+    if (!empty($filters['start_date'])) {
+        $where[] = 'created_at >= ?';
+        $params[] = $filters['start_date'];
+        $types .= 's';
+    }
+    
+    if (!empty($filters['end_date'])) {
+        $where[] = 'created_at <= ?';
+        $params[] = $filters['end_date'];
+        $types .= 's';
+    }
+    
+    $where_sql = $where ? 'WHERE ' . implode(' AND ', $where) : '';
+    
+    $sql = "
+    SELECT * FROM audit_logs
+    $where_sql
+    ORDER BY created_at DESC
+    LIMIT $limit OFFSET $offset
+    ";
+    
+    $stmt = mysqli_prepare($link, $sql);
+    
+    if (!empty($params)) {
+        mysqli_stmt_bind_param($stmt, $types, ...$params);
+    }
+    
+    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_get_result($stmt)->fetch_all(MYSQLI_ASSOC);
+}
+
+/**
+ * Exporter les logs d'audit en CSV pour conformité
+ * @param array $filters Filtres de recherche
+ * @return string Contenu CSV
+ */
+function export_audit_logs_csv($filters = []) {
+    $logs = get_audit_logs($filters, 10000, 0);
+    
+    $csv = "ID,Date,Utilisateur,Action,Type Entité,ID Entité,IP,Status,Message Erreur\n";
+    
+    foreach ($logs as $log) {
+        $csv .= sprintf(
+            "%d,\"%s\",\"%s\",\"%s\",\"%s\",%d,\"%s\",\"%s\",\"%s\"\n",
+            $log['id'],
+            $log['created_at'],
+            str_replace('"', '""', $log['username']),
+            $log['action'],
+            $log['entity_type'] ?? 'N/A',
+            $log['entity_id'] ?? 0,
+            $log['ip_address'],
+            $log['status'],
+            str_replace('"', '""', $log['error_message'] ?? '')
+        );
+    }
+    
+    return $csv;
+}
+?>

@@ -262,6 +262,59 @@ include '../includes/header.php';
 .small-text {
     font-size: 0.65rem !important;
 }
+
+/* PAGINATION DATATABLE PROFESSIONNELLE */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%) !important;
+    border: 1px solid #bdc3c7 !important;
+    color: #2c3e50 !important;
+    font-weight: 500 !important;
+    margin: 2px !important;
+    padding: 0.4rem 0.8rem !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%) !important;
+    color: white !important;
+    border-color: #003366 !important;
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.2) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.active {
+    background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%) !important;
+    color: white !important;
+    border-color: #003366 !important;
+    font-weight: 600 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+}
+
+/* INFO PAGINATION */
+.dataTables_wrapper .dataTables_info {
+    color: #7f8c8d !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    padding: 0.75rem 0 !important;
+}
+
+/* LENGTH MENU */
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #bdc3c7 !important;
+    border-radius: 4px !important;
+    padding: 0.4rem 0.6rem !important;
+    color: #2c3e50 !important;
+    background-color: #f8f9fa !important;
+}
+
+.dataTables_wrapper .dataTables_length select:focus {
+    border-color: #003366 !important;
+    box-shadow: 0 0 5px rgba(0, 51, 102, 0.3) !important;
+}
 </style>
 
 <div class="container-fluid">
@@ -282,119 +335,158 @@ include '../includes/header.php';
         </div>
     </div>
 
-    <!-- Indicateurs clés de performance -->
+    <!-- En-tête des indicateurs clés de performance -->
     <div class="row mb-4">
         <div class="col-12">
-            <h3 class="h5 mb-3 text-primary border-bottom pb-2">
-                <i class="fas fa-chart-line me-2"></i>Indicateurs Clés de Performance
-            </h3>
+            <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%); padding: 2rem 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-tachometer-alt fa-2x me-3" style="color: #64c8ff;"></i>
+                        <div>
+                            <h3 class="mb-0 fw-bold text-white" style="font-size: 1.5rem; letter-spacing: 0.5px;">Indicateurs Clés de Performance</h3>
+                            <small class="opacity-75" style="color: #c8d9f0; font-size: 0.95rem;">Métriques de suivi en temps réel</small>
+                        </div>
+                    </div>
+                    <div class="text-end" style="color: #64c8ff;">
+                        <i class="fas fa-sync-alt fa-lg me-2"></i>
+                        <small style="font-weight: 500; color: #c8d9f0;">Actualisation automatique</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Cartes de résumé avec icônes -->
+    <!-- Cartes de résumé avec design professionnel -->
     <div class="row g-3 mb-5">
-        <div class="col-lg-2 col-md-4">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-plus-circle fa-2x text-white"></i>
+        <!-- Nouveaux -->
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%); transition: all 0.3s ease; border-top: 4px solid #64c8ff;">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-plus-circle" style="font-size: 2.5rem; color: #64c8ff;"></i>
                     </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">Nouveaux</h6>
-                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['nouveau']; ?></p>
-                    <small class="text-white">Demandes</small>
+                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['nouveau']; ?></p>
+                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Nouveaux</h6>
+                    <hr style="border-color: rgba(100, 200, 255, 0.3); margin: 0.75rem 0;">
+                    <small style="color: #c8d9f0; font-weight: 500; font-size: 0.85rem;">Demandes reçues</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-4">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #4D6F8F 0%, #6C757D 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-folder-open fa-2x text-white"></i>
+        <!-- Ouverts -->
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #4D6F8F 0%, #6C757D 100%); transition: all 0.3s ease; border-top: 4px solid #17a2b8;">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-folder-open" style="font-size: 2.5rem; color: #17a2b8;"></i>
                     </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">Ouverts</h6>
-                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['ouvert']; ?></p>
-                    <small class="text-white">En cours</small>
+                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['ouvert']; ?></p>
+                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Ouverts</h6>
+                    <hr style="border-color: rgba(23, 162, 184, 0.3); margin: 0.75rem 0;">
+                    <small style="color: #e0f4f7; font-weight: 500; font-size: 0.85rem;">À traiter</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-4">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #2E8B57 0%, #38f9d7 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-cogs fa-2x text-white"></i>
+        <!-- En cours -->
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #2E8B57 0%, #38f9d7 100%); transition: all 0.3s ease; border-top: 4px solid #ffc107;">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-cogs" style="font-size: 2.5rem; color: white;"></i>
                     </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">En cours</h6>
-                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['en_cours']; ?></p>
-                    <small class="text-white">Traitement</small>
+                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['en_cours']; ?></p>
+                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">En cours</h6>
+                    <hr style="border-color: rgba(255, 193, 7, 0.3); margin: 0.75rem 0;">
+                    <small style="color: white; font-weight: 500; font-size: 0.85rem;">En traitement</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-4">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #6C757D 0%, #495057 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-clock fa-2x text-white"></i>
+        <!-- En attente -->
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #6C757D 0%, #495057 100%); transition: all 0.3s ease; border-top: 4px solid #fd7e14;">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-clock" style="font-size: 2.5rem; color: #fd7e14;"></i>
                     </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">En attente</h6>
-                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['en_attente']; ?></p>
-                    <small class="text-white">Suspendus</small>
+                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['en_attente']; ?></p>
+                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">En attente</h6>
+                    <hr style="border-color: rgba(253, 126, 20, 0.3); margin: 0.75rem 0;">
+                    <small style="color: #ffe9d9; font-weight: 500; font-size: 0.85rem;">Suspendus</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-4">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #2E8B57 0%, #28a745 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-check-circle fa-2x text-white"></i>
+        <!-- Résolus -->
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #2E8B57 0%, #28a745 100%); transition: all 0.3s ease; border-top: 4px solid #28a745;">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-check-circle" style="font-size: 2.5rem; color: white;"></i>
                     </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">Résolus</h6>
-                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['resolu']; ?></p>
-                    <small class="text-white">Terminés</small>
+                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['resolu']; ?></p>
+                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Résolus</h6>
+                    <hr style="border-color: rgba(40, 167, 69, 0.3); margin: 0.75rem 0;">
+                    <small style="color: #d4edda; font-weight: 500; font-size: 0.85rem;">Terminés</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-4">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #003366 0%, #212529 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-archive fa-2x text-white"></i>
+        <!-- Fermés -->
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #003366 0%, #212529 100%); transition: all 0.3s ease; border-top: 4px solid #6c757d;">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-archive" style="font-size: 2.5rem; color: #6c757d;"></i>
                     </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">Fermés</h6>
-                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['ferme']; ?></p>
-                    <small class="text-white">Archivés</small>
+                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['ferme']; ?></p>
+                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Fermés</h6>
+                    <hr style="border-color: rgba(108, 117, 125, 0.3); margin: 0.75rem 0;">
+                    <small style="color: #d9d9d9; font-weight: 500; font-size: 0.85rem;">Archivés</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cartes métriques complémentaires -->
+    <div class="row g-3 mb-5">
+        <!-- Temps Moyen de Résolution -->
+        <div class="col-lg-6 col-md-12">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #4D6F8F 0%, #6f42c1 100%); border-top: 4px solid #64c8ff;">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div style="width: 70px; height: 70px; background: rgba(100, 200, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-hourglass-end" style="font-size: 2rem; color: #64c8ff;"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="fw-bold text-white mb-1" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">Temps Moyen de Résolution</h6>
+                            <p class="mb-2" style="font-size: 2rem; color: #64c8ff; font-weight: bold; letter-spacing: 1px;"><?php echo format_seconds_for_dashboard($avg_resolution_time_seconds); ?></p>
+                            <small style="color: #c8d9f0; font-weight: 500;">Demandes résolues / fermées</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Carte Temps Moyen de Résolution -->
-        <div class="col-lg-3 col-md-6">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #4D6F8F 0%, #6f42c1 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-stopwatch fa-2x text-white"></i>
+        <!-- Total des Demandes -->
+        <div class="col-lg-6 col-md-12">
+            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #003366 0%, #2E8B57 100%); border-top: 4px solid #28a745;">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div style="width: 70px; height: 70px; background: rgba(40, 167, 69, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-chart-bar" style="font-size: 2rem; color: #28a745;"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="fw-bold text-white mb-1" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">Total des Demandes</h6>
+                            <p class="mb-2" style="font-size: 2rem; color: #28a745; font-weight: bold; letter-spacing: 1px;"><?php echo $stats['total']; ?></p>
+                            <small style="color: #d4edda; font-weight: 500;">Depuis le lancement de la plateforme</small>
+                        </div>
                     </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">Temps Moyen de Résolution</h6>
-                    <p class="card-text fs-4 fw-bold mb-0 text-white"><?php echo format_seconds_for_dashboard($avg_resolution_time_seconds); ?></p>
-                    <small class="text-white">Performance globale</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Carte Total -->
-        <div class="col-lg-3 col-md-6">
-            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #003366 0%, #2E8B57 100%); color: white;">
-                <div class="card-body text-center p-3">
-                    <div class="mb-2">
-                        <i class="fas fa-chart-bar fa-2x text-white"></i>
-                    </div>
-                    <h6 class="card-title mb-1 fw-bold text-white">Total des Demandes</h6>
-                    <p class="card-text fs-4 fw-bold mb-0 text-white"><?php echo $stats['total']; ?></p>
-                    <small class="text-white">Depuis le lancement</small>
                 </div>
             </div>
         </div>
@@ -462,18 +554,18 @@ include '../includes/header.php';
 
     <!-- Liste des tickets -->
     <div class="card border-0 shadow-lg">
-        <div class="card-header bg-gradient-primary text-white border-0" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+        <div class="card-header bg-gradient-primary text-white border-0" style="background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%); padding: 2rem 1.5rem;">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
-                    <i class="fas fa-list-ul fa-lg me-3"></i>
+                    <i class="fas fa-list-ul fa-lg me-3" style="color: #64c8ff;"></i>
                     <div>
-                        <h5 class="mb-0 fw-bold">Gestion des Demandes</h5>
-                        <small class="opacity-75">Suivi et traitement des demandes utilisateurs</small>
+                        <h5 class="mb-0 fw-bold" style="font-size: 1.2rem; letter-spacing: 0.5px;">Gestion des Demandes</h5>
+                        <small class="opacity-75" style="font-size: 0.9rem;">Suivi et traitement des demandes utilisateurs</small>
                     </div>
                 </div>
                 <div class="text-end">
-                    <div class="h4 mb-0 fw-bold"><?php echo $total_tickets; ?></div>
-                    <small class="opacity-75">Total demandes</small>
+                    <div class="h4 mb-0 fw-bold" style="color: #64c8ff;"><?php echo $total_tickets; ?></div>
+                    <small class="opacity-75" style="font-size: 0.9rem;">Total demandes</small>
                 </div>
             </div>
         </div>
@@ -630,9 +722,9 @@ include '../includes/header.php';
                 <table class="table table-striped table-hover align-middle shadow-sm table-sm" style="border-radius: 10px; overflow: hidden; max-width: 1200px; font-size: 0.875rem;">
                     <thead class="table-dark">
                         <tr>
-                            <th class="d-none d-xl-table-cell"><i class="fas fa-clock me-1"></i>Âge</th>
+                            <th class="d-none d-xl-table-cell"><i class="fas fa-hourglass-end me-1"></i>Délai d'Exécution</th>
                             <th><i class="fas fa-hashtag me-1"></i>ID</th>
-                            <th></i>Titre</th>
+                            <th><i class="fas fa-file-alt me-1"></i>Titre</th>
                             <th><i class="fas fa-info-circle me-1"></i>Statut</th>
                             <th><i class="fas fa-exclamation-triangle me-1"></i>Priorité</th>
                             <th class="d-none d-lg-table-cell"><i class="fas fa-cogs me-1"></i>Service</th>
@@ -709,19 +801,21 @@ include '../includes/header.php';
             </ul></nav>
             <?php endif; ?>
         </div>
-        <div class="card-footer bg-light border-0">
-            <div class="row align-items-center">
+        <div class="card-footer border-0" style="background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%); padding: 1rem;">
+            <div class="row align-items-center g-2">
                 <div class="col-md-8">
-                    <small class="text-muted">
-                        <i class="fas fa-info-circle me-1"></i>
-                        Utilisez les filtres pour affiner votre recherche. Les demandes peuvent être triées par statut, priorité et service.
-                    </small>
+                    <div class="d-flex align-items-center" style="background: rgba(3, 51, 102, 0.08); padding: 0.6rem 0.9rem; border-left: 3px solid #003366; border-radius: 6px;">
+                        <i class="fas fa-filter me-2" style="color: #003366; font-size: 1rem;"></i>
+                        <small style="color: #2c3e50; font-weight: 500; letter-spacing: 0.3px; font-size: 0.85rem;">
+                            Utilisez les filtres pour affiner votre recherche. Les demandes peuvent être triées par statut, priorité et service.
+                        </small>
+                    </div>
                 </div>
                 <div class="col-md-4 text-end">
-                    <small class="text-muted">
-                        <i class="fas fa-clock me-1"></i>
-                        Dernière mise à jour: <?php echo date('d/m/Y H:i'); ?>
-                    </small>
+                    <div style="color: #7f8c8d; font-size: 0.8rem;">
+                        <i class="fas fa-sync-alt me-1" style="color: #003366;"></i>
+                        <span style="font-weight: 500;">Mise à jour:</span> <?php echo date('d/m/Y \à H:i'); ?>
+                    </div>
                 </div>
             </div>
         </div>

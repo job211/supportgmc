@@ -157,6 +157,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 include '../includes/header.php';
+require_once '../includes/navigation_helpers.php';
 
 $services = [];
 $sql_services = "SELECT id, name FROM services ORDER BY name";
@@ -173,6 +174,19 @@ if ($result_types = mysqli_query($link, $sql_types)) {
         $ticket_types_by_service[$row['service_id']][] = $row;
     }
 }
+
+// Render page header with navigation
+render_page_header(
+    'Créer un Nouveau Ticket',
+    'dashboard.php',
+    'Remplissez les informations ci-dessous pour soumettre un nouveau ticket de support'
+);
+
+// Render breadcrumbs
+render_breadcrumbs([
+    ['label' => 'Tickets', 'url' => 'view_ticket.php'],
+    'Créer un ticket'
+]);
 ?>
 
 <style>
@@ -470,10 +484,13 @@ if ($result_types = mysqli_query($link, $sql_types)) {
                                     <small class="text-muted" id="file-info">Formats acceptés : JPG, PNG, GIF, PDF, DOC, DOCX, TXT (max 10MB)</small>
                                 </div>
 
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-submit">
+                                <div class="d-grid gap-2 mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg">
                                         <i class="fas fa-paper-plane me-2"></i>Soumettre le Ticket
                                     </button>
+                                    <a href="dashboard.php" class="btn btn-outline-secondary btn-lg">
+                                        <i class="fas fa-times me-2"></i>Annuler
+                                    </a>
                                 </div>
                             </form>
                         </div>

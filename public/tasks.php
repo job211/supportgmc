@@ -81,6 +81,9 @@ $tickets = mysqli_query($link, "SELECT id, title FROM tickets ORDER BY created_a
 $specifications = mysqli_query($link, "SELECT id, project_name FROM specifications ORDER BY created_at DESC LIMIT 100");
 
 include '../includes/header.php';
+?>
+
+<?php
 
 function get_priority_badge($priority) {
     switch ($priority) {
@@ -108,7 +111,7 @@ function get_status_badge($status) {
         <h2 class="h3">Gestion des Tâches</h2>
         <div>
             <a href="<?php echo $base_url; ?>/tasks_dashboard.php" class="btn btn-info me-2"><i class="fas fa-chart-bar me-1"></i> Dashboard</a>
-            <a href="<?php echo $base_url; ?>/task_create.php" class="btn btn-danger"><i class="fas fa-plus me-1"></i> Nouvelle tâche</a>
+            <a href="<?php echo $base_url; ?>/task_create.php" class="btn btn-success"><i class="fas fa-plus me-1"></i> Nouvelle Tâche</a>
         </div>
     </div>
 
@@ -178,14 +181,14 @@ function get_status_badge($status) {
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-hover table-striped mb-0 table-sm" style="max-width: 1200px; font-size: 0.875rem;">
+    <div class="card" style="height: 100%; display: flex; flex-direction: column;">
+        <div class="card-body p-0" style="flex: 1; overflow: auto;">
+            <div class="table-responsive h-100">
+                <table class="table table-hover table-striped mb-0 table-sm" style="width: 100%; font-size: 0.875rem;">
                     <thead class="table-dark">
                         <tr>
                             <th>ID</th>
-                            <th>Titre</th>
+                            <th>Tâche</th>
                             <th>Lié à</th>
                             <th>Responsable</th>
                             <th>Priorité</th>

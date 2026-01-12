@@ -86,6 +86,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 include '../includes/header.php';
+require_once '../includes/navigation_helpers.php';
+
+render_page_header(
+    'Créer une Nouvelle Tâche',
+    'tasks.php',
+    'Créez une nouvelle tâche pour organiser votre travail'
+);
+
+render_breadcrumbs([
+    ['label' => 'Tâches', 'url' => 'tasks.php'],
+    'Créer'
+]);
 ?>
 <div class="container mt-4">
     <h2>Nouvelle tâche</h2>
@@ -195,9 +207,11 @@ include '../includes/header.php';
             <input type="file" name="attachments[]" class="form-control" multiple>
             <div class="form-text">Formats autorisés : tout type de fichier. Taille max dépend du serveur.</div>
         </div>
-        <div class="d-flex justify-content-between align-items-center mt-4">
-            <button class="btn btn-success px-4"><i class="fas fa-plus me-2"></i>Créer la tâche</button>
-            <a href="tasks.php" class="btn btn-outline-secondary ms-2"><i class="fas fa-arrow-left me-2"></i>Annuler</a>
+        <div class="form-buttons-container">
+            <div class="form-buttons">
+                <button class="btn btn-primary btn-lg" type="submit"><i class="fas fa-check me-2"></i>Créer la tâche</button>
+                <a href="tasks.php" class="btn btn-outline-secondary btn-lg"><i class="fas fa-times me-2"></i>Annuler</a>
+            </div>
         </div>
     </form>
 </div>

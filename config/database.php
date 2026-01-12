@@ -2,8 +2,8 @@
 /* Configuration de la base de données */
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'ticket_user');
-define('DB_PASSWORD', 'ticket_pass');
-define('DB_NAME', 'ticket_app');
+define('DB_PASSWORD', 'TicketPass@123');
+define('DB_NAME', 'palladvticket');
 
 /* Tentative de connexion à la base de données MySQL */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);

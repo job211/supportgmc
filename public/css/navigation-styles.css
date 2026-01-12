@@ -1,0 +1,349 @@
+/* ========================================
+   NAVIGATION & BUTTON STYLES
+   ======================================== */
+
+/* Page Header Container */
+.page-header-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-bottom: 2px solid #dee2e6;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.page-header-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.page-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.page-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.page-help-text {
+    color: #6c757d;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.page-help-text i {
+    color: #0d6efd;
+}
+
+.page-header-right .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.page-header-right .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.page-header-right .btn-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    border: none;
+    color: white;
+}
+
+.page-header-right .btn-primary:hover {
+    background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+    color: white;
+}
+
+.page-header-right .btn-outline-secondary {
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+
+.page-header-right .btn-outline-secondary:hover {
+    background-color: #e2e6ea;
+    border-color: #6c757d;
+}
+
+.page-header-right .btn i {
+    font-size: 0.75rem;
+}
+
+/* Action Buttons Container */
+.action-buttons-container {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.action-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.action-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons .btn i {
+    font-size: 0.875rem;
+}
+
+/* Form Buttons Container */
+.form-buttons-container {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.form-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+.form-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.form-buttons .btn-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    border: none;
+    color: white;
+}
+
+.form-buttons .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(13, 110, 253, 0.3);
+}
+
+.form-buttons .btn-outline-secondary:hover {
+    background-color: #e2e6ea;
+    transform: translateY(-2px);
+}
+
+.form-buttons .btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+}
+
+.form-buttons .btn i {
+    font-size: 0.875rem;
+}
+
+/* Breadcrumb Container */
+.breadcrumb-container {
+    padding: 1rem 0 0.5rem 0;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0.5rem 0;
+    border-radius: 6px;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item a {
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.breadcrumb-item a:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
+.breadcrumb-item i {
+    font-size: 0.875rem;
+}
+
+/* Quick Actions Container */
+.quick-actions-container {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.quick-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.quick-action-btn:hover {
+    background-color: #0d6efd !important;
+    color: white !important;
+    transform: translateY(-1px);
+}
+
+.quick-action-btn i {
+    font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header-top {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .page-header-left {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .page-header-right {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .back-button {
+        width: auto;
+    }
+    
+    .page-header-right .btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+    }
+    
+    .action-buttons,
+    .form-buttons,
+    .quick-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .action-buttons .btn,
+    .form-buttons .btn,
+    .quick-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .form-buttons {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header-container {
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+    }
+    
+    .page-header-content {
+        padding: 0 0.75rem;
+    }
+    
+    .page-title {
+        font-size: 1.25rem;
+    }
+    
+    .page-help-text {
+        font-size: 0.85rem;
+    }
+    
+    .form-buttons .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Accessibility */
+.back-button:focus,
+.btn:focus,
+.quick-action-btn:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .page-header-container,
+    .action-buttons-container,
+    .form-buttons-container,
+    .quick-actions-container {
+        display: none;
+    }
+}

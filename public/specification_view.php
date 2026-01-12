@@ -144,17 +144,29 @@ include '../includes/header.php';
         <?php unset($_SESSION['error_message']); ?>
     <?php endif; ?>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
+    <div class="row mb-4">
+        <div class="col-lg-8">
             <h2 class="h3 mb-0">Cahier des Charges : <?= htmlspecialchars($spec['project_name']) ?></h2>
             <p class="text-muted mb-0">Client : <?= htmlspecialchars($spec['client_name']) ?></p>
         </div>
-        <div>
-            <a href="specifications.php" class="btn btn-outline-secondary me-2"><i class="fas fa-arrow-left me-1"></i>Retour à la liste</a>
-            <a href="specification_export_pdf.php?id=<?= $spec_id ?>" class="btn me-2" style="background-color: #28a745; color: white; border-color: #28a745; font-weight: bold;" target="_blank"><i class="fas fa-file-pdf me-1"></i>Exporter en PDF</a>
-            <a href="specification_share_email.php?id=<?= $spec_id ?>" class="btn me-2" style="background-color: #007bff; color: white; border-color: #007bff; font-weight: bold;" onclick="return confirm('Êtes-vous sûr de vouloir envoyer ce cahier des charges par e-mail aux collaborateurs et au créateur du projet ?');"><i class="fas fa-share me-1"></i>Partager par E-mail</a>
-            <a href="task_create.php?specification_id=<?= $spec_id ?>" class="btn me-2" style="background-color: #17a2b8; color: white; border-color: #17a2b8; font-weight: bold;"><i class="fas fa-plus me-1"></i>Nouvelle Tâche</a>
-            <a href="specification_edit.php?id=<?= $spec_id ?>" class="btn" style="background-color: #dc3545; color: white; border-color: #dc3545; font-weight: bold;"><i class="fas fa-edit me-1"></i>Modifier</a>
+        <div class="col-lg-4">
+            <div class="row g-2">
+                <div class="col-6">
+                    <a href="specifications.php" class="btn btn-outline-secondary w-100 btn-sm"><i class="fas fa-arrow-left me-1"></i>Retour</a>
+                </div>
+                <div class="col-6">
+                    <a href="specification_export_pdf.php?id=<?= $spec_id ?>" class="btn btn-success w-100 btn-sm" target="_blank"><i class="fas fa-file-pdf me-1"></i>PDF</a>
+                </div>
+                <div class="col-6">
+                    <a href="specification_share_email.php?id=<?= $spec_id ?>" class="btn btn-primary w-100 btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir envoyer ce cahier des charges par e-mail aux collaborateurs et au créateur du projet ?');"><i class="fas fa-envelope me-1"></i>Email</a>
+                </div>
+                <div class="col-6">
+                    <a href="task_create.php?specification_id=<?= $spec_id ?>" class="btn btn-info w-100 btn-sm"><i class="fas fa-plus me-1"></i>Tâche</a>
+                </div>
+                <div class="col-12">
+                    <a href="specification_edit.php?id=<?= $spec_id ?>" class="btn btn-danger w-100 btn-sm"><i class="fas fa-edit me-1"></i>Modifier</a>
+                </div>
+            </div>
         </div>
     </div>
 

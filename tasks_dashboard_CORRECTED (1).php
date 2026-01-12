@@ -11,25 +11,20 @@ require_once '../includes/header.php';
 
 <style>
 .table-header-professional {
-    background: transparent !important;
+    background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%) !important;
     color: white !important;
     border-bottom: 2px solid #4D6F8F !important;
 }
 
 .table-header-professional th {
     color: white !important;
-    background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%) !important;
+    background: transparent !important;
     border-color: #4D6F8F !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
     font-size: 0.8rem !important;
     letter-spacing: 0.5px !important;
     padding: 0.75rem 0.5rem !important;
-}
-
-.table-header-professional th:last-child {
-    border-right: none !important;
 }
 
 .bg-gradient-institutional {
@@ -61,58 +56,22 @@ canvas {
 /* Force les couleurs des badges - Statut avec classes personnalisées */
 .badge.status-terminee {
     background-color: #28a745 !important;
-    color: #ffffff !important;
-    padding: 0.35em 0.65em !important;
-    font-size: 0.75em !important;
-    font-weight: 700 !important;
-    display: inline-block !important;
-    border-radius: 0.25rem !important;
-    line-height: 1 !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-    vertical-align: baseline !important;
+    color: white !important;
 }
 
 .badge.status-en-cours {
     background-color: #0d6efd !important;
-    color: #ffffff !important;
-    padding: 0.35em 0.65em !important;
-    font-size: 0.75em !important;
-    font-weight: 700 !important;
-    display: inline-block !important;
-    border-radius: 0.25rem !important;
-    line-height: 1 !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-    vertical-align: baseline !important;
+    color: white !important;
 }
 
 .badge.status-en-attente {
     background-color: #ffc107 !important;
-    color: #000000 !important;
-    padding: 0.35em 0.65em !important;
-    font-size: 0.75em !important;
-    font-weight: 700 !important;
-    display: inline-block !important;
-    border-radius: 0.25rem !important;
-    line-height: 1 !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-    vertical-align: baseline !important;
+    color: #000 !important;
 }
 
 .badge.status-a-faire {
     background-color: #6c757d !important;
-    color: #ffffff !important;
-    padding: 0.35em 0.65em !important;
-    font-size: 0.75em !important;
-    font-weight: 700 !important;
-    display: inline-block !important;
-    border-radius: 0.25rem !important;
-    line-height: 1 !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-    vertical-align: baseline !important;
+    color: white !important;
 }
 
 /* Couleurs pour les priorités */
@@ -224,139 +183,103 @@ if($res_list === false) {
         </div>
     </div>
 
-    <!-- En-tête des indicateurs clés de performance -->
+    <!-- Indicateurs clés de performance -->
     <div class="row mb-4">
         <div class="col-12">
-            <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%); padding: 2rem 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-tasks fa-2x me-3" style="color: #64c8ff;"></i>
-                        <div>
-                            <h3 class="mb-0 fw-bold text-white" style="font-size: 1.5rem; letter-spacing: 0.5px;">Tableau de Bord des Tâches</h3>
-                            <small class="opacity-75" style="color: #c8d9f0; font-size: 0.95rem;">Suivi et gestion des tâches opérationnelles</small>
-                        </div>
-                    </div>
-                    <div class="text-end" style="color: #64c8ff;">
-                        <i class="fas fa-sync-alt fa-lg me-2"></i>
-                        <small style="font-weight: 500; color: #c8d9f0;">Actualisation automatique</small>
-                    </div>
-                </div>
-            </div>
+            <h3 class="h5 mb-3 text-primary border-bottom pb-2">
+                <i class="fas fa-chart-line me-2"></i>Indicateurs Clés de Performance
+            </h3>
         </div>
     </div>
-
-    <!-- Section des Indicateurs Clés de Performance -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <h4 class="fw-bold text-dark mb-3" style="font-size: 1.1rem; letter-spacing: 0.5px;">
-                <i class="fas fa-chart-line me-2" style="color: #003366;"></i>Indicateurs Clés de Performance
-            </h4>
-        </div>
-    </div>
-
-    <!-- Cartes de résumé avec design professionnel -->
+    <!-- Cartes de résumé avec icônes -->
     <div class="row g-3 mb-5">
-        <!-- Total -->
-        <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%); transition: all 0.3s ease; border-top: 4px solid #64c8ff;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-list-check" style="font-size: 2.5rem; color: #64c8ff;"></i>
+        <div class="col-lg-2 col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #003366 0%, #4D6F8F 100%); color: white;">
+                <div class="card-body text-center p-3">
+                    <div class="mb-2">
+                        <i class="fas fa-list-check fa-2x text-white"></i>
                     </div>
-                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['total']; ?></p>
-                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Total</h6>
-                    <hr style="border-color: rgba(100, 200, 255, 0.3); margin: 0.75rem 0;">
-                    <small style="color: #c8d9f0; font-weight: 500; font-size: 0.85rem;">Tâches actives</small>
+                    <h6 class="card-title mb-1 fw-bold text-white">Total</h6>
+                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['total']; ?></p>
+                    <small class="text-white">Tâches actives</small>
                 </div>
             </div>
         </div>
 
-        <!-- À faire -->
-        <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #4D6F8F 0%, #6C757D 100%); transition: all 0.3s ease; border-top: 4px solid #6c757d;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-circle-plus" style="font-size: 2.5rem; color: white;"></i>
+        <div class="col-lg-2 col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #4D6F8F 0%, #6C757D 100%); color: white;">
+                <div class="card-body text-center p-3">
+                    <div class="mb-2">
+                        <i class="fas fa-circle-plus fa-2x text-white"></i>
                     </div>
-                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['todo']; ?></p>
-                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">À faire</h6>
-                    <hr style="border-color: rgba(108, 117, 125, 0.3); margin: 0.75rem 0;">
-                    <small style="color: #e0e0e0; font-weight: 500; font-size: 0.85rem;">En attente</small>
+                    <h6 class="card-title mb-1 fw-bold text-white">À faire</h6>
+                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['todo']; ?></p>
+                    <small class="text-white">En attente</small>
                 </div>
             </div>
         </div>
 
-        <!-- En cours -->
-        <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #2E8B57 0%, #38f9d7 100%); transition: all 0.3s ease; border-top: 4px solid #ffc107;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-play-circle" style="font-size: 2.5rem; color: white;"></i>
+        <div class="col-lg-2 col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #2E8B57 0%, #38f9d7 100%); color: white;">
+                <div class="card-body text-center p-3">
+                    <div class="mb-2">
+                        <i class="fas fa-play-circle fa-2x text-white"></i>
                     </div>
-                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['doing']; ?></p>
-                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">En cours</h6>
-                    <hr style="border-color: rgba(255, 193, 7, 0.3); margin: 0.75rem 0;">
-                    <small style="color: white; font-weight: 500; font-size: 0.85rem;">En exécution</small>
+                    <h6 class="card-title mb-1 fw-bold text-white">En cours</h6>
+                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['doing']; ?></p>
+                    <small class="text-white">En exécution</small>
                 </div>
             </div>
         </div>
 
-        <!-- En attente -->
-        <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #6C757D 0%, #495057 100%); transition: all 0.3s ease; border-top: 4px solid #fd7e14;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-pause-circle" style="font-size: 2.5rem; color: #fd7e14;"></i>
+        <div class="col-lg-2 col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #6C757D 0%, #495057 100%); color: white;">
+                <div class="card-body text-center p-3">
+                    <div class="mb-2">
+                        <i class="fas fa-pause-circle fa-2x text-white"></i>
                     </div>
-                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['waiting']; ?></p>
-                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">En attente</h6>
-                    <hr style="border-color: rgba(253, 126, 20, 0.3); margin: 0.75rem 0;">
-                    <small style="color: #ffe9d9; font-weight: 500; font-size: 0.85rem;">Suspendues</small>
+                    <h6 class="card-title mb-1 fw-bold text-white">En attente</h6>
+                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['waiting']; ?></p>
+                    <small class="text-white">Suspendues</small>
                 </div>
             </div>
         </div>
 
-        <!-- Terminée -->
-        <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #2E8B57 0%, #28a745 100%); transition: all 0.3s ease; border-top: 4px solid #28a745;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-check-circle" style="font-size: 2.5rem; color: white;"></i>
+        <div class="col-lg-2 col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #2E8B57 0%, #28a745 100%); color: white;">
+                <div class="card-body text-center p-3">
+                    <div class="mb-2">
+                        <i class="fas fa-check-circle fa-2x text-white"></i>
                     </div>
-                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['done']; ?></p>
-                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Terminée</h6>
-                    <hr style="border-color: rgba(40, 167, 69, 0.3); margin: 0.75rem 0;">
-                    <small style="color: #d4edda; font-weight: 500; font-size: 0.85rem;">Finalisées</small>
+                    <h6 class="card-title mb-1 fw-bold text-white">Terminée</h6>
+                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['done']; ?></p>
+                    <small class="text-white">Finalisées</small>
                 </div>
             </div>
         </div>
 
-        <!-- Urgente -->
-        <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #dc3545 0%, #b02a37 100%); transition: all 0.3s ease; border-top: 4px solid #ff6b6b;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color: #ff6b6b;"></i>
+        <div class="col-lg-2 col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #dc3545 0%, #b02a37 100%); color: white;">
+                <div class="card-body text-center p-3">
+                    <div class="mb-2">
+                        <i class="fas fa-exclamation-triangle fa-2x text-white"></i>
                     </div>
-                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['urgent']; ?></p>
-                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Urgente</h6>
-                    <hr style="border-color: rgba(255, 107, 107, 0.3); margin: 0.75rem 0;">
-                    <small style="color: #f5d5d5; font-weight: 500; font-size: 0.85rem;">Priorité haute</small>
+                    <h6 class="card-title mb-1 fw-bold text-white">Urgente</h6>
+                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['urgent']; ?></p>
+                    <small class="text-white">Priorité haute</small>
                 </div>
             </div>
         </div>
 
-        <!-- En retard -->
-        <div class="col-lg-2 col-md-4 col-sm-6">
-            <div class="card h-100 border-0 shadow-lg" style="background: linear-gradient(135deg, #003366 0%, #212529 100%); transition: all 0.3s ease; border-top: 4px solid #ff4757;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3" style="height: 50px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-clock" style="font-size: 2.5rem; color: #ff4757;"></i>
+        <div class="col-lg-2 col-md-4">
+            <div class="card h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #003366 0%, #212529 100%); color: white;">
+                <div class="card-body text-center p-3">
+                    <div class="mb-2">
+                        <i class="fas fa-clock fa-2x text-white"></i>
                     </div>
-                    <p class="card-text fw-bold mb-1" style="font-size: 2.2rem; color: white; letter-spacing: 1px;"><?php echo $stats['late']; ?></p>
-                    <h6 class="card-title mb-1 fw-bold text-white" style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">En retard</h6>
-                    <hr style="border-color: rgba(255, 71, 87, 0.3); margin: 0.75rem 0;">
-                    <small style="color: #ffe0e0; font-weight: 500; font-size: 0.85rem;">Échéances dépassées</small>
+                    <h6 class="card-title mb-1 fw-bold text-white">En retard</h6>
+                    <p class="card-text fs-3 fw-bold mb-0 text-white"><?php echo $stats['late']; ?></p>
+                    <small class="text-white">Échéances dépassées</small>
                 </div>
             </div>
         </div>
@@ -555,30 +478,12 @@ if($res_list === false) {
                         <td class="d-none d-lg-table-cell"><?php if($task['ticket_id']): ?><a href="view_ticket.php?id=<?php echo $task['ticket_id']; ?>"><?php echo htmlspecialchars($task['ticket_title']); ?></a><?php else: ?>-<?php endif; ?></td>
                         <td class="d-none d-xl-table-cell"><?php if($task['specification_id']): ?><a href="specification_view.php?id=<?php echo $task['specification_id']; ?>"><?php echo htmlspecialchars($task['project_name']); ?></a><?php else: ?>-<?php endif; ?></td>
                         <td class="d-none d-lg-table-cell"><?php echo htmlspecialchars($task['assigned_name'] ?? 'Non assigné'); ?></td>
-                        <td>
-                            <?php
-                            $status = $task['status'];
-                            $status_trimmed = trim($status);
-                            
-                            // Debug: afficher la valeur en commentaire HTML
-                            echo '<!-- Status brut: "' . htmlspecialchars($status) . '" | Trimmed: "' . htmlspecialchars($status_trimmed) . '" | Length: ' . strlen($status_trimmed) . ' -->';
-                            
-                            // Déterminer la classe avec toutes les variations possibles
-                            if(in_array($status_trimmed, ['Terminée', 'Terminee', 'Terminé', 'Termine', 'terminée', 'terminee', 'terminé', 'termine'])) {
-                                $class = 'status-terminee';
-                            } elseif(in_array($status_trimmed, ['En cours', 'en cours', 'EN COURS'])) {
-                                $class = 'status-en-cours';
-                            } elseif(in_array($status_trimmed, ['En attente', 'en attente', 'EN ATTENTE'])) {
-                                $class = 'status-en-attente';
-                            } elseif(in_array($status_trimmed, ['À faire', 'A faire', 'à faire', 'a faire', 'À FAIRE', 'A FAIRE'])) {
-                                $class = 'status-a-faire';
-                            } else {
-                                // Utiliser bg-danger pour voir facilement les statuts non reconnus
-                                $class = 'bg-danger';
-                            }
-                            ?>
-                            <span class="badge <?php echo $class; ?>"><?php echo htmlspecialchars($status_trimmed); ?></span>
-                        </td>
+                        <td><span class="badge <?php 
+                            if($task['status']==='Terminée') echo 'status-terminee';
+                            elseif($task['status']==='En cours') echo 'status-en-cours';
+                            elseif($task['status']==='En attente') echo 'status-en-attente';
+                            elseif($task['status']==='À faire') echo 'status-a-faire';
+                            ?>"><?php echo htmlspecialchars($task['status']); ?></span></td>
                         <td class="d-none d-xl-table-cell"><span class="badge bg-<?php echo ($task['priority']==='Urgente'?'danger':($task['priority']==='Haute'?'warning text-dark':($task['priority']==='Normale'?'info':'secondary'))); ?>"><?php echo htmlspecialchars($task['priority']); ?></span></td>
                         <td class="d-none d-lg-table-cell"><?php echo (!empty($task['due_date']) && $task['due_date'] != '0000-00-00' && strtotime($task['due_date']) && strtotime($task['due_date']) > 0) ? date('d/m/Y', strtotime($task['due_date'])) : '-'; ?></td>
                         <td class="d-none d-xl-table-cell"><?php echo date('d/m/Y', strtotime($task['created_at'])); ?></td>
@@ -592,7 +497,7 @@ if($res_list === false) {
                     </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="9" class="text-center">Aucune tâche trouvée.</td></tr>
+                    <tr><td colspan="8" class="text-center">Aucune tâche trouvée.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
